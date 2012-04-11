@@ -1,0 +1,19 @@
+= form_for(@landmark) do |f|
+  - if @landmark.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@landmark.errors.count, "error")
+        prohibited this landmark from being saved:
+      %ul
+        - @landmark.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :address
+    %br/
+    = f.text_field :address
+  .actions
+    = f.submit

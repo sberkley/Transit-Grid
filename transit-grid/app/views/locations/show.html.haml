@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @location.name
+%p
+  %b Address:
+  = @location.address
+
+%p
+  %table
+    %tr
+      %th Landmark
+      %th Travel Time
+      - @results.each do |res|
+        %tr
+          %td= res[:name]
+          %td= res[:duration]
+      
+
+= link_to 'Edit', edit_location_path(@location)
+|
+\#{link_to 'Back', locations_path}

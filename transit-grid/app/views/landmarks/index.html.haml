@@ -1,0 +1,17 @@
+%h1 Listing landmarks
+%table
+  %tr
+    %th Name
+    %th Address
+    %th
+    %th
+    %th
+  - @landmarks.each do |landmark|
+    %tr
+      %td= landmark.name
+      %td= landmark.address
+      %td= link_to 'Show', landmark
+      %td= link_to 'Edit', edit_landmark_path(landmark)
+      %td= link_to 'Destroy', landmark, confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Landmark', new_landmark_path

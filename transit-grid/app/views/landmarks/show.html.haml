@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @landmark.name
+%p
+  %b Address:
+  = @landmark.address
+= link_to 'Edit', edit_landmark_path(@landmark)
+|
+\#{link_to 'Back', landmarks_path}
