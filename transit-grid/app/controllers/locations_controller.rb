@@ -20,8 +20,13 @@ class LocationsController < ApplicationController
     @results = Array.new
     
     @landmarks.each do |landmark|
+      #route = Route.find_or_create_by_landmark_id_and_location_id(landmark.id, @location.id)
       route = Route.find_or_create_by_landmark_id_and_location_id(landmark.id, @location.id)
-      route.duration ||= 47
+      if route.duration.nil?
+        route.duration=route.calculate_duration landmark.id, @location.id
+        route.save
+      end
+
       @results.append({:name => landmark.name, :duration => route.duration})
     end
 

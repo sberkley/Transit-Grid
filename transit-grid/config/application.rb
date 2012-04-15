@@ -55,5 +55,10 @@ module TransitGrid
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    File.open("config/bing_api_key") do |key|
+      BING_API_KEY = key.gets
+    end
+    
   end
 end
